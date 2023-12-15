@@ -1,40 +1,49 @@
-import { IsNumber, IsString, IsDate, IsEmail, IsNotEmpty, IsOptional } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
+
 export class CreateUserDto {
-    @IsNumber()
-    id: number;
+  @IsEmail({
+    message: '邮箱格式不正确',
+  })
+  email: string;
 
-    @IsEmail()
-    email: string;
+  @IsString()
+  @IsNotEmpty({
+    message: '用户名不能为空',
+  })
+  user_name: string;
 
-    @IsString()
-    @IsNotEmpty()
-    user_name: string;
+  @IsString()
+  @IsOptional()
+  slogan?: string;
 
-    @IsString()
-    @IsOptional()
-    slogan?: string;
+  @IsString()
+  @IsOptional()
+  gravatar?: string;
 
-    @IsString()
-    @IsOptional()
-    gravatar?: string;
+  @IsNotEmpty({
+    message: '密码不能为空',
+  })
+  @MinLength(6, {
+    message: '密码长度不能小于6位',
+  })
+  @IsString()
+  password: string;
 
-    @IsString()
-    password: string;
+  @IsString()
+  @IsOptional()
+  role_ids?: string;
 
-    @IsString()
-    @IsOptional()
-    role_ids?: string;
-
-    @IsString()
-    @IsOptional()
-    info?: string;
-
-    @IsNumber()
-    deleted: number;
-
-    @IsDate()
-    created_at: Date;
-
-    @IsDate()
-    updated_at: Date;
+  @IsString()
+  @IsOptional()
+  info?: string;
+  @IsNotEmpty({
+    message: '验证码不能为空',
+  })
+  captcha: string;
 }

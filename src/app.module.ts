@@ -22,6 +22,8 @@ import { Diary } from './diary/entities/diary.entity';
 import { Comment } from './comment/entities/comment.entity';
 import { Tag } from './tag/entities/tag.entity';
 import { TagModule } from './tag/tag.module';
+import { RedisModule } from './redis/redis.module';
+import { EmailModule } from './email/email.module';
 
 
 @Module({
@@ -50,7 +52,9 @@ import { TagModule } from './tag/tag.module';
     UserModule,
     RoleModule,
     MenuModule,
-    TagModule
+    TagModule,
+    RedisModule,
+    EmailModule
   ],
   controllers: [AppController],
   providers: [AppService],
