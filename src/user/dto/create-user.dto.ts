@@ -8,7 +8,7 @@ import {
 
 export class CreateUserDto {
   @IsEmail({
-    message: '邮箱格式不正确',
+    domain_specific_validation: true,
   })
   email: string;
 
@@ -46,4 +46,9 @@ export class CreateUserDto {
     message: '验证码不能为空',
   })
   captcha: string;
+}
+
+export class RegisterCaptchaDto {
+  @IsEmail()
+  readonly email: string;
 }

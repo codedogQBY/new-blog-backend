@@ -24,21 +24,30 @@ import { Tag } from './tag/entities/tag.entity';
 import { TagModule } from './tag/tag.module';
 import { RedisModule } from './redis/redis.module';
 import { EmailModule } from './email/email.module';
-
+import { DATA_BASE_CONFIG } from './config';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: "mysql",
-      host: "localhost",
-      port: 3306,
-      username: "root",
-      password: "root",
-      database: "new_blog_system",
+      type: 'mysql',
+      host: DATA_BASE_CONFIG.HOST,
+      port: DATA_BASE_CONFIG.PORT,
+      username: DATA_BASE_CONFIG.USERNAME,
+      password: DATA_BASE_CONFIG.PASSWORD,
+      database: DATA_BASE_CONFIG.DATABASE,
       synchronize: true,
       logging: true,
       entities: [
-          User,Article,Role,Option,Link,Board,Comment,Diary,Menu,Tag
+        User,
+        Article,
+        Role,
+        Option,
+        Link,
+        Board,
+        Comment,
+        Diary,
+        Menu,
+        Tag,
       ],
       poolSize: 10,
       connectorPackage: 'mysql2',
@@ -54,7 +63,7 @@ import { EmailModule } from './email/email.module';
     MenuModule,
     TagModule,
     RedisModule,
-    EmailModule
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -10,7 +10,7 @@ export class EmailService {
     this.transporter = createTransport({
       host: EMAIL_CONFIG.HOST,
       port: EMAIL_CONFIG.PORT,
-      secure: false,
+      secure: true,
       auth: {
         user: EMAIL_CONFIG.USER,
         pass: EMAIL_CONFIG.PASS,
